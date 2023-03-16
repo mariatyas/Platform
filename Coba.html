@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Tugas 4 - Java Script
+    </title>
+    <h1>
+        Tugas 4 - Java Script
+    </h1>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+    <label for="nama">Nama :</label>
+    <input type="text" id="nama" placeholder="Nama">
+    </p>
+    <label for="pilihan">Pilihan :</label>
+    <input type="number" id="pilihan" placeholder="Jumlah">
+    <p>
+    <button onclick="tampilPil()">OK</button>
+    <div id="pilihan"></div>
+    <button onclick="resultBttn()">Tampil</button>
+    <div id="buttonRadio"></div>
+    </p>
+
+    <script>
+        var teksPilihan = []
+        function tampilPil() {
+        var banyakPil = document.getElementById("banyakPil").value;
+        var pilihan = "";
+
+            for (var i = 1; i <= banyakPil; i++) {
+                pilihan +=
+                "<p> Pilihan " +
+                i +
+                '<input type="text" id="input ' +
+                i +
+                ' " placeholder = "Masukkan Pilihan" >' +
+                "</p>";
+            }
+            document.getElementById("pilihan").innerHTML = pilihan;
+        }
+
+        function resultBttn() {
+        var banyakPil = document.getElementById("banyakPil").value;
+        var teksPil = "";
+
+            for (var i = 1; i <= banyakPil; i++) {
+                teksPilihan[i - 1] = document.getElementById("input" + i).value;
+                teksPil +=
+                '<p><input type="radio" name="pilihan" value="' +
+                teksPilihan[i - 1] +
+                '"> ' +
+                teksPilihan[i - 1] +
+                "</p>";
+            }
+            document.getElementById("buttonRadio").innerHTML = teksPil;
+    </script>
+</body>
+</html>

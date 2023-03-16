@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jumlah Pilihan</title>
+  </head>
+  <body>
+      <h1>Silahkan Masukkan input data</h1>
+      <label for="textChoices">Masukkan Nama  : </label>
+      <input type="text" placeholder="<Masukkan Nama >" required>
+        <br>
+        <br>
+    <label for="numChoices">Masukkan Jumlah Pilihan:</label>
+    <input type="number" id="numChoices">
+    <button onclick="showChoices()">Tampilkan Pilihan</button>
+    <div id="choices"></div>
+
+    <button type="button"id="btnRadio1">OK</button>
+    <div id="btnRadio2">
+        <input type="radio" name="size" id="xs">
+        <label for="xs">Halo</label>
+    </div>
+
+    <script>
+        const radio=document.getElementById("btnRadio1");
+        const radio2=document.getElementById("btnRadio2");
+        radio2.style.display="none";
+        radio.style.display="none";
+      function showChoices() {
+       // radio.style.display="block"
+        var numChoices = document.getElementById("numChoices").value;
+        var choices = "";
+        for (var i = 1; i <= numChoices; i++) {
+            choices += "<p>Pilihan <input placeholder='<Masukkan Pilihan>'" + i + "</p>";
+           radio.style.display="block" 
+           radio.addEventListener("click",(e) => {
+              radio2.style.display="block"
+           })
+          }
+          document.getElementById("choices").innerHTML = choices;
+        }
+      </script>
+    </body>
+  </html>
