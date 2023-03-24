@@ -12,22 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <p>
-    <label for="nama">Nama :</label>
-    <input type="text" id="nama" placeholder="Nama">
-    </p>
-    <label for="pilihan">Pilihan :</label>
-    <input type="number" id="pilihan" placeholder="Jumlah">
-    <p>
-    <button onclick="tampilPil()">OK</button>
-    <div id="pilihan"></div>
-    <button onclick="resultBttn()">Tampil</button>
-    <div id="buttonRadio"></div>
-    </p>
 
+<body>
     <script>
-        var teksPilihan = []
+        var teksPilihan = [];
         function tampilPil() {
         var banyakPil = document.getElementById("banyakPil").value;
         var pilihan = "";
@@ -58,6 +46,19 @@
                 "</p>";
             }
             document.getElementById("buttonRadio").innerHTML = teksPil;
+        }
     </script>
+        <p>
+        <label for="nama">Nama :</label>
+        <input type="text" id="nama" placeholder="Nama">
+        </p>
+        <label for="pilihan">Pilihan :</label>
+        <input type="number" id="pilihan" placeholder="Jumlah">
+        <p>
+        <button onclick="tampilPil()">OK</button>
+        <div id="pilihan"></div>
+        <button onclick="resultBttn()">Tampil</button>
+        <div id="buttonRadio"></div>
+        </p>
 </body>
 </html>
