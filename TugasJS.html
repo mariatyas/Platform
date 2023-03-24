@@ -9,56 +9,80 @@
 
   <body>
     <script>
-      var teksPilihan = [];
+      var pil = [];
+      var button = "";
+      var teksPlhn = "";
+      var input = "";
       function tampilPil() {
         var banyakPil = document.getElementById("banyakPil").value;
         var pilihan = "";
+        button = '<button onclick="resultBtn()">SHOW</button>';
 
         for (var i = 1; i <= banyakPil; i++) {
-          pilihan +=
-            "<p> Pilihan " +
-            i +
-            '<input type="text" id="input ' +
-            i +
-            ' " placeholder = "Masukkan Pilihan" >' +
-            "</p>";
+          pilihan += "<p> Pilihan " + i + ': <input type="text" id="input' 
+          + i + '" placeholder="Masukkan Teks Pilihan"> </p>';
         }
+        pilihan += button;
         document.getElementById("pilihan").innerHTML = pilihan;
       }
-
-      function resultBttn() {
+      function resultBtn() {
         var banyakPil = document.getElementById("banyakPil").value;
         var teksPil = "";
 
+        button = '<button onclick="result()">YA</button>';
+
         for (var i = 1; i <= banyakPil; i++) {
-          teksPilihan[i - 1] = document.getElementById("input" + i).value;
-          teksPil +=
-            '<p><input type="radio" name="pilihan" value="' +
-            teksPilihan[i - 1] +
-            '"> ' +
-            teksPilihan[i - 1] +
-            "</p>";
+          pil[i - 1] = document.getElementById("input" + i).value;
+          input += pil[i - 1] + " , ";
+          teksPil += '<p><input type="radio" name="pilihan" value="' +
+          pil[i - 1] + '"> ' + pil[i - 1] + "</p>";
         }
-        document.getElementById("buttonRadio").innerHTML = teksPil;
+        teksPil += button;
+        document.getElementById("btnRadio").innerHTML = teksPil;
+      }
+
+      function result() {
+        //document.getElementById("frm1").submit();
+        var nama = document.getElementById("nama").value;
+        banyakPil = document.getElementById("banyakPil").value;
+        let pil;
+        var radio = document.getElementsByName("pilihan");
+        for (let i = 0; i < radio.length; i++) {
+          if (radio[i].checked) {
+            teskPlhn = radio[i].value;
+            pil = teskPlhn;
+          }
+        }
+        var hasil = "Hallo, nama saya " + nama + ", saya mempunyai sejumlah " + banyakPil + " pilihan yaitu " 
+        + input + " dan saya memilih " + pil + ".";
+
+        document.getElementById("HasilAkhir").innerHTML = hasil;
       }
     </script>
-    <h2>Berikut adalah Tugas yang dikerjakan :</h2>
-    <label for="nama">Nama : </label>
-    <input type="text" id="nama" placeholder="Masukkan Nama" />
-    <br />
+
+    <pre>
+        <h1>
+          NAMA : Maria Imaculata Sunaringtyas
+          NIM  : 215314090
+        </h1>
+    </pre>
+    <h2>Berikut adalah form daftar pilihan :</h2>
     <p>
-    <label for="banyakPil">Jumlah Pilihan : </label>
-    <input type="number" id="banyakPil" placeholder="Masukkan Jumlah" />
+    <label for="nama">Nama : </label>
+    <input type="text" id="nama" placeholder="Nama"
+    />
+    <br />
+    </p>
+    <p>
+    <label for="banyakPil">Jumlah Pilihan :</label>
+    <input type="number" id="banyakPil" placeholder="Jumlah Pilihan" />
     <br />
     </p>
     <button onclick="tampilPil()">OK</button>
     <div id="pilihan"></div>
-    <br />
-    <button onclick="resultBttn()">Tampil</button>
-    <div id="buttonRadio"></div>
-    <!--   <div id="teksPilihan"></div>
-    <div id="drop"></div>
-    -->
-     
+
+    <div id="btnRadio"></div>
+
+    <div id="HasilAkhir"></div>
   </body>
 </html>
