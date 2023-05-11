@@ -1,15 +1,18 @@
 <?php
-$servername = 
-$username = 
-$password = 
-$database =
+$host="localhost";
+$user="root";
+$pass="";
+$database="mahasiswa";
 
-$conn = new mysqli($servername, $username, $password, $database);
-
-if($conn->connect_error){
-    die("Koneksi database gagal: " . $conn->connect_error);
+$koneksi=mysqli_connect($host, $user, $pass);
+if($koneksi){
+    $buka=mysqli_select_db($koneksi, $database);
+    echo "Database dapat terhubung";
+    if(!$buka){
+        echo "Database tidak dapat terhubung";
+    }
+}else{
+    echo "MySQL tidak Terhubung";
 }
-echo "Koneksi database berhasil";
 
-$conn->close()
 ?>
