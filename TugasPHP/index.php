@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>To Do List</title>
+    <title>TugasPHP</title>
 </head>
 <body>
 
