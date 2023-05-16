@@ -3,7 +3,7 @@
 session_start();
 $lainuser = $_SESSION["userid"];
 if(!isset($_SESSION["login"])){
-    header("Location: todolist.php");
+    header("Location: index.php");
     exit;
 }
 
