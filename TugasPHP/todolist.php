@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+$lainuser = $_SESSION["userid"];
+if(!isset($_SESSION["login"])){
+    header("Location: todolist.php");
+    exit;
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
