@@ -1,15 +1,3 @@
-<?php
-
-session_start();
-$lainuser = $_SESSION["userid"];
-if(!isset($_SESSION["login"])){
-    header("Location: index.php");
-    exit;
-}
-
-
-
-?>
 
 <!DOCTYPE html>
 <html>
