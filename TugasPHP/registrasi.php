@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'regis.php';
 
 if( isset($_POST["register"]) ){
