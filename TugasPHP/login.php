@@ -14,9 +14,7 @@ if( isset($_POST["login"]) ){
         // cek password
         $row = mysqli_fetch_assoc($result);
         if( password_verify($password, $row["password"]) ){
-            $_SESSION["login"] = true;
-            $_SESSION["userid"] = $row["id"];
-            header("Location: todolist.php");
+            header("Location: index.php");
             exit;
         }
     }
