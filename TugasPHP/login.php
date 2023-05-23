@@ -1,4 +1,10 @@
 <?php
+session_start();
+if( isset($_SESSION["login"])){
+    header("Location: todolist.php");
+    exit;
+}
+
 require 'regis.php';
 
 if( isset($_POST["login"]) ){
@@ -14,7 +20,10 @@ if( isset($_POST["login"]) ){
         // cek password
         $row = mysqli_fetch_assoc($result);
         if( password_verify($password, $row["password"]) ){
-            header("Location: index.php");
+            //set session
+            $_SESSION["login"] = true;
+            $_SESSION["userid"] = $row["id"];
+            header("Location: todolist.php");
             exit;
         }
     }

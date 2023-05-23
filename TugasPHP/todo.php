@@ -1,16 +1,8 @@
 <?php
-$host="localhost";
-$user="root";
-$pass="";
-$database="php_dasar";
+    //create connection database
+    $conn = mysqli_connect("localhost", "root", "", "php_dasar");
 
-$regis=mysqli_connect($host, $user, $pass);
-if($regis){
-    $buka=mysqli_select_db($regis, $database);
-    echo "Database dapat terhubung";
-    if(!$buka){
-        echo "Database tidak dapat terhubung";
+    if (!$conn){
+        die("Koneksi tidak berhasil" . mysqli_connect_error());
     }
-}else{
-    echo "MySQL tidak Terhubung";
-}
+?>

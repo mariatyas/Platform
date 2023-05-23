@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 //menghapus session
 $_SESSION = [];

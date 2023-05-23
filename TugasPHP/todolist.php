@@ -1,11 +1,9 @@
 <?php
-session_start();
 require 'todo.php';
 require 'function.php';
 require 'display.php';
-global $conn;
-
-$bedauser = $_SESSION["userid"];
+session_start();
+$bedaUser = $_SESSION["userid"];
 if( !isset($_SESSION["login"])){
     header("Location: login.php");
     exit;
@@ -36,7 +34,7 @@ if(isset($_GET["update"])){
         echo "fail update data";
     }
 }
-$query = "SELECT * FROM todolist";
+$query = "SELECT * FROM todolist WHERE userid = $bedaUser";
 $resultTudu = display($query);
 
 ?>
@@ -45,6 +43,8 @@ $resultTudu = display($query);
 <html>
 <head>
     <title>To Do List</title>
+
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
     <div class="formtudu">
@@ -61,19 +61,22 @@ $resultTudu = display($query);
                 <th>ID</th>
                 <th>List Kegiatan</th>
                 <th>Status</th>
+                <th>Keterangan</th>
             </tr>
 
-            <?php $a = 1; ?>
+            <?php $i = 1; ?>
             <?php foreach ($resultTudu as $elemen) : ?>
             <tr>
-                <td><?= $a ?></td>
+                <td><?= $i ?></td>
                 <td><?= $elemen["kegiatan"] ?></td>
                 <td><?= $elemen["status"] ?></td>
+                <td><?="" ?>
                     <a href="?update=<?= $elemen["id"] ?>">Selesai</a>
-                    <a href="?hapus=<?= $elemen["id"] ?>">Hapus</a>
+
+                    <a href="?delete=<?= $elemen["id"] ?>">Hapus</a>
                 </td>
             </tr>
-            <?php $a++; ?>
+            <?php $i++; ?>
             <?php endforeach; ?>
         </table>
     </div>
@@ -81,6 +84,7 @@ $resultTudu = display($query);
 
     <div class="tombolOut">
         <a style="text-align: right;" href="logout.php">Logout</a>
+        <br><br>
     </div>
 
     <div class="footer">

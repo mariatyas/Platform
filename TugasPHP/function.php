@@ -1,18 +1,18 @@
 <?php
 require 'todo.php';
 
-function tambahList($database){
+function createList($database){
     $bedauser = $_SESSION["userid"];
     global $conn;
     $kegiatan = $database["kegiatan"];
     $status = "Belum Selesai";
 
-    $query = "INSERT INTO todolist (userid, kegiatan, status) VALUE ('$bedauser', '$kegiatan', '$status')";
+    $query = "INSERT INTO todolist (userId, kegiatan, status) VALUE ('$bedauser', '$kegiatan', '$status')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
 
-function hapusList($id){
+function deleteList($id){
     global $conn;
     mysqli_query($conn, "DELETE FROM todolist WHERE id = $id");
     return mysqli_affected_rows($conn);
