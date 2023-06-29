@@ -2,12 +2,12 @@
 require 'todo.php';
 
 function createList($database){
-    $bedauser = $_SESSION["userid"];
+    $bedaUser = $_SESSION["userid"];
     global $conn;
     $kegiatan = $database["kegiatan"];
     $status = "Belum Selesai";
 
-    $query = "INSERT INTO todolist (userId, kegiatan, status) VALUE ('$bedauser', '$kegiatan', '$status')";
+    $query = "INSERT INTO todolist (userId, kegiatan, status) VALUES ('$bedaUser', '$kegiatan', '$status')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }

@@ -4,9 +4,9 @@ $user="root";
 $pass="";
 $database="php_dasar";
 
-$regis=mysqli_connect($host, $user, $pass);
-if($regis){
-    $buka=mysqli_select_db($regis, $database);
+$conn=mysqli_connect($host, $user, $pass);
+if($conn){
+    $buka=mysqli_select_db($conn, $database);
     echo "Database dapat terhubung";
     if(!$buka){
         echo "Database tidak dapat terhubung";
@@ -16,14 +16,14 @@ if($regis){
 }
 
 function registrasi($database){
-    global $regis;
+    global $conn;
 
     $username = strtolower(stripslashes($database["username"]));
-    $password = mysqli_real_escape_string($regis, $database["password"]);
-    $password2 = mysqli_real_escape_string($regis, $database["password2"]);
+    $password = mysqli_real_escape_string($conn, $database["password"]);
+    $password2 = mysqli_real_escape_string($conn, $database["password2"]);
 
     // cek username sudah ada atau belum
-    $result = mysqli_query($regis, "SELECT username FROM user WHERE username = '$username'");
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
     
     if( mysqli_fetch_assoc($result) ){
         echo "<script>
@@ -44,9 +44,9 @@ function registrasi($database){
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     // tambahkan userbaru ke dalan database
-    mysqli_query($regis, "INSERT INTO user VALUES('', '$username', '$password')");
+    mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password')");
 
-    return mysqli_affected_rows($regis);
+    return mysqli_affected_rows($conn);
 
 }
 

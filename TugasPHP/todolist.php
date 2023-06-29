@@ -34,7 +34,7 @@ if(isset($_GET["update"])){
         echo "fail update data";
     }
 }
-$query = "SELECT * FROM todolist WHERE userid = $bedaUser";
+$query = "SELECT * FROM todolist";
 $resultTudu = display($query);
 
 ?>
